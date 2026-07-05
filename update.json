@@ -1,7 +1,6 @@
-
 {
   "version": "v1.0",
   "versionCode": "1",
-  "zipUrl": "https://github.com/YoussefAlaa-magisk/-Super-UIBoot-module-/releases/latest/download/SuperUI-bootsamsung-module.zip",
+  "zipUrl": "https://raw.githubusercontent.com/YoussefAlaa-magisk/-Super-UIBoot-module-/main/SuperUI-bootsamsung-module.zip",
   "changelog": "https://raw.githubusercontent.com/YoussefAlaa-magisk/-Super-UIBoot-module-/main/CHANGELOG.md"
 }
