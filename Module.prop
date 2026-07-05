@@ -4,4 +4,4 @@ version=1.0
 versionCode=1
 author=Youssef Alaa
 description=Super UI Boot for oneui
-updateJson=https://github.com/YoussefAlaa-magisk/-Super-UIBoot-module-/tree/main/update.json
+updateJson=https://raw.githubusercontent.com/YoussefAlaa-magisk/-Super-UIBoot-module-/main/update.json
