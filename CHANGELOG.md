@@ -3,8 +3,6 @@
 - new c++ file for android in action.sh
 - sadly no new boot
 - fixed some issues
-- iphone emojis
-- iphone fonts
 - now it's not just a boot 
 - new call disconnect and connect sound
 - new sounds
