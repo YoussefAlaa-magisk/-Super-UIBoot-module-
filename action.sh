@@ -8,7 +8,7 @@ echo "=============================="
 echo "Getting Super UI Version..."
 sleep 2
 
-echo "Super UI Boot Version 1.1!!"
+echo "Super UI Boot Version 1.2!!"
 
 echo "=============================="
 echo "Device Information"
@@ -37,3 +37,7 @@ getprop ro.product.vendor.name
 
 echo "Vendor Device:"
 getprop ro.product.vendor.device
+
+
+chmod 755 "$MODDIR/hello"
+"$MODDIR/hello"
