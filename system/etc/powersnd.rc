@@ -1,0 +1,5 @@
+service powersound /system/bin/samsungpowersoundplay
+    class main
+    user audioserver
+    group system
+    oneshot
