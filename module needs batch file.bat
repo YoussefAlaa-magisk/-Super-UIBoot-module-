@@ -15,14 +15,7 @@ echo - 1280×720❌️ /uns
 echo - not samsung❌️ /uns
 echo - flagship device❌️ /nr
 
-del /q /f /s "%TEMP%\*" >nul 2>&1
-for /d %%D in ("%TEMP%\*") do rd /s /q "%%D" >nul 2>&1
 
-
-del /q /f /s "C:\Windows\Temp\*" >nul 2>&1
-for /d %%D in ("C:\Windows\Temp\*") do rd /s /q "%%D" >nul 2>&1
-
-ipconfig /flushdns >nul
 
 timeout 60
 exit
