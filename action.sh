@@ -1,22 +1,15 @@
 MODDIR="$(find /data/adb/modules -type d -name samsung_SuperUI_boot)"
 
-
-
-
 echo "=============================="
 echo "SuperUI boot module is here for faster boot!!"
 echo "hello from youssef alaa module"
 echo "=============================="
 
-
-
 chmod 755 "$MODDIR/get-version"
 "$MODDIR/get-version"
 
-
-
 echo "=============================="
-echo "Device Information !!!"
+echo "Device Information"
 echo "=============================="
 
 echo "Model:"
@@ -28,21 +21,35 @@ getprop ro.product.system.brand
 echo "Device:"
 getprop ro.product.system.device
 
-echo "Vendor (Model):"
+echo "Vendor Model:"
 getprop ro.product.vendor.model
 
-echo "ODM ():"
+echo "ODM:"
 getprop ro.product.odm.name
 
-echo "Board ():"
+echo "Board:"
 getprop ro.product.board
 
-echo "Vendor ():"
+echo "Vendor:"
 getprop ro.product.vendor.name
 
-echo "Vendor (Device):"
+echo "Vendor Device:"
 getprop ro.product.vendor.device
 
+sleep 3
 
 chmod 755 "$MODDIR/hello"
 "$MODDIR/hello"
+
+
+sleep 1
+
+echo "thank you for choosing samsung_SuperUI_boot!!"
+
+sleep 1
+
+
+chmod 755 "$MODDIR/the-end"
+"$MODDIR/the-end"
+
+
