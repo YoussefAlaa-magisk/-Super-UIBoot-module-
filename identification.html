@@ -8,22 +8,26 @@
 
     <style>
         :root {
-            --bg: #11110f;
-            --surface: #1b1a17;
-            --surface-2: #24221e;
-            --surface-3: #2c2924;
+            --bg: #0e0d0c;
+            --panel: #181614;
+            --panel-light: #211e1a;
+            --panel-hover: #29251f;
 
-            --border: #3d3932;
-            --text: #f2eee8;
-            --muted: #aaa299;
+            --border: #38332c;
+            --border-light: #4b443a;
 
-            --orange: #e27a3f;
-            --orange-light: #f09a62;
+            --text: #f3eee7;
+            --muted: #aaa197;
+            --dim: #746c63;
 
-            --green: #75b892;
-            --green-dark: #263a2e;
+            --accent: #df783d;
+            --accent-light: #f09a61;
+            --accent-dark: #a94e24;
 
-            --shadow: rgba(0, 0, 0, 0.55);
+            --green: #79b892;
+            --green-bg: #1d3025;
+
+            --radius: 18px;
         }
 
         * {
@@ -50,67 +54,70 @@
 
             background:
                 radial-gradient(
-                    circle at 15% 10%,
-                    rgba(226, 122, 63, 0.11),
-                    transparent 30%
+                    circle at 10% 0%,
+                    rgba(223, 120, 61, 0.12),
+                    transparent 28%
                 ),
                 radial-gradient(
-                    circle at 90% 85%,
-                    rgba(117, 184, 146, 0.08),
-                    transparent 30%
+                    circle at 95% 90%,
+                    rgba(121, 184, 146, 0.07),
+                    transparent 28%
                 ),
                 var(--bg);
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 35px 20px;
+            padding: 28px 18px;
         }
 
-        /* Main application window */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-        .window {
-            width: min(1000px, 100%);
+        /* App window */
 
-            background: rgba(27, 26, 23, 0.97);
+        .app {
+            width: min(1080px, 100%);
+            margin: auto;
+
+            background: rgba(24, 22, 20, 0.97);
 
             border: 1px solid var(--border);
-            border-radius: 22px;
+            border-radius: 24px;
 
             overflow: hidden;
 
             box-shadow:
-                0 40px 100px var(--shadow),
-                0 0 0 1px rgba(255,255,255,0.02);
+                0 40px 100px rgba(0, 0, 0, 0.58),
+                0 0 0 1px rgba(255,255,255,0.015);
 
-            animation: windowIn 0.65s ease;
+            animation: appIn 0.6s ease;
         }
 
-        @keyframes windowIn {
+        @keyframes appIn {
             from {
                 opacity: 0;
-                transform: translateY(25px) scale(0.97);
+                transform: translateY(20px) scale(0.985);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: none;
             }
         }
 
-        /* Top bar */
+        /* Top window */
 
-        .titlebar {
-            height: 58px;
+        .topbar {
+            height: 62px;
 
-            padding: 0 20px;
+            padding: 0 22px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            background: #211f1c;
+            background: #1b1917;
+
             border-bottom: 1px solid var(--border);
         }
 
@@ -119,13 +126,13 @@
             align-items: center;
             gap: 11px;
 
+            font-weight: 800;
             font-size: 14px;
-            font-weight: 700;
         }
 
-        .brand-icon {
-            width: 29px;
-            height: 29px;
+        .brand-logo {
+            width: 31px;
+            height: 31px;
 
             border-radius: 9px;
 
@@ -133,126 +140,184 @@
             align-items: center;
             justify-content: center;
 
-            background: var(--orange);
-            color: #18110c;
+            background: var(--accent);
+            color: #1b110b;
 
             font-weight: 900;
-            font-size: 15px;
 
             box-shadow:
-                0 5px 18px rgba(226, 122, 63, 0.25);
+                0 5px 20px rgba(223, 120, 61, 0.22);
         }
 
-        .brand small {
+        .brand-text small {
             display: block;
 
             margin-top: 2px;
 
-            color: #817970;
+            color: var(--dim);
+
             font-size: 10px;
             font-weight: 500;
         }
 
-        .window-controls {
+        .top-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .github-small {
+            padding: 8px 12px;
+
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            color: #c9c1b8;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+        .github-small:hover {
+            background: var(--panel-hover);
+            border-color: var(--border-light);
+        }
+
+        .window-dots {
             display: flex;
             gap: 7px;
         }
 
-        .window-control {
+        .dot {
             width: 9px;
             height: 9px;
 
             border-radius: 50%;
 
-            background: #686057;
+            background: #5d574f;
         }
 
-        /* Main content */
+        /* Navigation */
 
-        .content {
-            padding: 58px;
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            padding: 10px 22px;
+
+            background: #151311;
+
+            border-bottom: 1px solid #292621;
         }
+
+        .nav a {
+            padding: 8px 12px;
+
+            border-radius: 8px;
+
+            color: #8d857c;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+        .nav a:hover {
+            background: #24211d;
+            color: #e7ded4;
+        }
+
+        /* Main */
+
+        .main {
+            padding: 62px;
+        }
+
+        /* Hero */
 
         .hero {
             display: grid;
 
-            grid-template-columns: 155px 1fr;
+            grid-template-columns: 180px 1fr;
 
-            gap: 38px;
+            gap: 42px;
 
             align-items: center;
         }
 
-        /* SuperUI icon */
+        .logo-box {
+            width: 180px;
+            height: 180px;
 
-        .boot-icon {
-            width: 155px;
-            height: 155px;
-
-            border-radius: 38px;
+            border-radius: 44px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
+            position: relative;
+
             background:
                 linear-gradient(
                     145deg,
-                    #332d27,
-                    #211e1a
+                    #332d26,
+                    #1d1a17
                 );
 
-            border: 1px solid #4c453d;
-
-            position: relative;
+            border: 1px solid #4a4238;
 
             box-shadow:
-                inset 0 0 35px rgba(226,122,63,0.08),
-                0 22px 45px rgba(0,0,0,0.3);
-
-            animation: iconFloat 4s ease-in-out infinite;
+                inset 0 0 40px rgba(223,120,61,0.07),
+                0 25px 50px rgba(0,0,0,0.32);
         }
 
-        .boot-icon::before {
+        .logo-box::before {
             content: "";
 
             position: absolute;
 
-            inset: 11px;
+            inset: 12px;
 
-            border-radius: 29px;
+            border-radius: 34px;
 
-            border: 1px solid rgba(226,122,63,0.15);
+            border: 1px solid rgba(223,120,61,0.13);
         }
 
-        .boot-symbol {
-            font-size: 64px;
+        .logo-letter {
+            color: var(--accent-light);
 
-            color: var(--orange-light);
+            font-size: 70px;
+            font-weight: 900;
 
             filter:
                 drop-shadow(
-                    0 0 18px rgba(226,122,63,0.25)
+                    0 0 20px rgba(223,120,61,0.25)
                 );
+
+            animation: breathe 3.5s ease-in-out infinite;
         }
 
-        @keyframes iconFloat {
+        @keyframes breathe {
             0%, 100% {
-                transform: translateY(0);
+                transform: scale(1);
             }
 
             50% {
-                transform: translateY(-5px);
+                transform: scale(1.04);
             }
         }
 
         .eyebrow {
-            margin: 0 0 9px;
+            margin: 0 0 10px;
 
-            color: var(--orange);
+            color: var(--accent);
 
-            font-size: 12px;
-            font-weight: 800;
+            font-size: 11px;
+            font-weight: 900;
 
             text-transform: uppercase;
 
@@ -262,22 +327,20 @@
         h1 {
             margin: 0;
 
-            font-size: clamp(38px, 6vw, 65px);
+            font-size: clamp(42px, 7vw, 70px);
 
             line-height: 0.95;
 
-            letter-spacing: -3px;
-
-            color: #f4eee6;
+            letter-spacing: -3.5px;
         }
 
         .subtitle {
-            margin: 15px 0 22px;
+            margin: 17px 0 22px;
 
-            color: var(--orange-light);
+            color: var(--accent-light);
 
             font-size: 17px;
-            font-weight: 650;
+            font-weight: 700;
         }
 
         .description {
@@ -287,9 +350,67 @@
 
             color: var(--muted);
 
-            font-size: 16px;
-
             line-height: 1.75;
+
+            font-size: 15px;
+        }
+
+        /* Buttons */
+
+        .actions {
+            margin-top: 28px;
+
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition:
+                transform 0.2s,
+                background 0.2s,
+                border-color 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: var(--accent);
+            color: #1c110b;
+
+            box-shadow:
+                0 10px 25px rgba(223,120,61,0.16);
+        }
+
+        .button-primary:hover {
+            background: var(--accent-light);
+        }
+
+        .button-secondary {
+            background: #24211d;
+
+            border: 1px solid var(--border);
+
+            color: #d8d0c7;
+        }
+
+        .button-secondary:hover {
+            border-color: var(--border-light);
+            background: #2a2722;
         }
 
         /* Divider */
@@ -297,7 +418,7 @@
         .divider {
             height: 1px;
 
-            margin: 48px 0 30px;
+            margin: 55px 0 34px;
 
             background:
                 linear-gradient(
@@ -308,21 +429,24 @@
                 );
         }
 
-        /* Cards */
+        /* Section */
 
-        .section-title {
+        .section-label {
             margin-bottom: 15px;
 
-            font-size: 13px;
-            font-weight: 800;
+            color: var(--dim);
+
+            font-size: 11px;
+            font-weight: 900;
 
             text-transform: uppercase;
-            letter-spacing: 1.5px;
 
-            color: #827970;
+            letter-spacing: 1.8px;
         }
 
-        .info-grid {
+        /* Cards */
+
+        .cards {
             display: grid;
 
             grid-template-columns:
@@ -332,59 +456,58 @@
         }
 
         .card {
-            position: relative;
-
             padding: 22px;
 
-            min-height: 112px;
+            min-height: 125px;
 
-            background: var(--surface-2);
+            background: var(--panel-light);
 
             border: 1px solid var(--border);
 
-            border-radius: 15px;
-
-            overflow: hidden;
+            border-radius: var(--radius);
 
             transition:
                 transform 0.25s ease,
-                border-color 0.25s ease,
-                background 0.25s ease;
-        }
-
-        .card::after {
-            content: "";
-
-            position: absolute;
-
-            width: 80px;
-            height: 80px;
-
-            right: -30px;
-            bottom: -35px;
-
-            border-radius: 50%;
-
-            background: rgba(226,122,63,0.06);
+                background 0.25s ease,
+                border-color 0.25s ease;
         }
 
         .card:hover {
             transform: translateY(-4px);
 
-            background: var(--surface-3);
+            background: var(--panel-hover);
 
-            border-color: #66584c;
+            border-color: #5b5146;
+        }
+
+        .card-icon {
+            width: 34px;
+            height: 34px;
+
+            margin-bottom: 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #302a24;
+
+            color: var(--accent-light);
+
+            font-weight: 900;
         }
 
         .card-title {
-            margin-bottom: 12px;
+            margin-bottom: 7px;
 
-            color: #847b72;
+            color: #81786f;
 
-            font-size: 11px;
-            font-weight: 800;
+            font-size: 10px;
+            font-weight: 900;
 
-            letter-spacing: 1.4px;
+            letter-spacing: 1.3px;
 
             text-transform: uppercase;
         }
@@ -392,16 +515,46 @@
         .card-value {
             color: #eee7df;
 
-            font-size: 17px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 800;
         }
 
-        .card-description {
-            margin-top: 5px;
+        /* Info panel */
 
-            color: #777067;
+        .info-panel {
+            margin-top: 28px;
 
-            font-size: 12px;
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+        }
+
+        .info {
+            padding: 24px;
+
+            background: var(--panel);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+        }
+
+        .info h2 {
+            margin: 0 0 10px;
+
+            font-size: 16px;
+        }
+
+        .info p {
+            margin: 0;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+            font-size: 13px;
         }
 
         /* Status */
@@ -409,23 +562,23 @@
         .status {
             margin-top: 28px;
 
-            padding: 19px 21px;
+            padding: 20px 22px;
 
             display: flex;
             align-items: flex-start;
 
             gap: 14px;
 
-            background: var(--green-dark);
+            background: var(--green-bg);
 
-            border: 1px solid #38503f;
+            border: 1px solid #344e3d;
 
-            border-radius: 15px;
+            border-radius: var(--radius);
         }
 
         .status-icon {
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
 
             flex-shrink: 0;
 
@@ -435,93 +588,92 @@
 
             border-radius: 9px;
 
-            background: rgba(117,184,146,0.13);
+            background: rgba(121,184,146,0.12);
 
             color: var(--green);
 
-            font-weight: bold;
+            font-weight: 900;
         }
 
         .status-title {
             margin-bottom: 5px;
 
-            color: #d4e5da;
+            color: #d6e5db;
 
-            font-size: 14px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 900;
         }
 
         .status-text {
-            color: #9db4a5;
+            color: #9db3a4;
 
             font-size: 13px;
 
             line-height: 1.6;
         }
 
-        /* Boot progress */
+        /* Progress */
 
-        .boot-progress {
-            margin-top: 30px;
+        .progress-box {
+            margin-top: 28px;
 
-            padding: 21px;
+            padding: 22px;
 
-            background: var(--surface);
+            background: #171512;
 
             border: 1px solid var(--border);
 
-            border-radius: 15px;
+            border-radius: var(--radius);
         }
 
-        .progress-header {
+        .progress-head {
             display: flex;
-
             justify-content: space-between;
 
             margin-bottom: 12px;
         }
 
-        .progress-title {
-            color: #d8d0c7;
-
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .progress-label {
-            color: var(--orange);
+        .progress-head span:first-child {
+            color: #cfc6bd;
 
             font-size: 12px;
             font-weight: 800;
         }
 
-        .progress-bar {
+        .progress-head span:last-child {
+            color: var(--accent);
+
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+        .progress {
             height: 7px;
 
-            background: #34302b;
+            overflow: hidden;
 
             border-radius: 20px;
 
-            overflow: hidden;
+            background: #302c27;
         }
 
         .progress-fill {
             width: 72%;
             height: 100%;
 
+            border-radius: inherit;
+
             background:
                 linear-gradient(
                     90deg,
-                    #b8582b,
-                    var(--orange-light)
+                    var(--accent-dark),
+                    var(--accent-light)
                 );
 
-            border-radius: inherit;
-
-            animation: progressIn 1.2s ease;
+            animation: loadProgress 1.2s ease;
         }
 
-        @keyframes progressIn {
+        @keyframes loadProgress {
             from {
                 width: 0;
             }
@@ -533,61 +685,59 @@
 
         /* Footer */
 
-        .footer {
-            margin-top: 38px;
+        footer {
+            margin-top: 45px;
+            padding-top: 25px;
+
+            border-top: 1px solid #302c27;
 
             display: flex;
-
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
 
             gap: 20px;
         }
 
-        .copyright {
-            color: #716960;
+        .footer-text {
+            color: #70685f;
 
-            font-size: 12px;
+            font-size: 11px;
 
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        .copyright strong {
+        .footer-text strong {
             color: #958b81;
         }
 
-        .system-button {
-            border: 0;
+        .github-button {
+            display: inline-flex;
 
-            padding: 12px 19px;
+            align-items: center;
+            gap: 8px;
+
+            padding: 11px 15px;
 
             border-radius: 10px;
 
-            background: var(--orange);
+            background: #24211d;
 
-            color: #1d130d;
+            border: 1px solid var(--border);
 
-            font-size: 13px;
+            color: #ddd5cb;
+
+            font-size: 12px;
             font-weight: 800;
 
-            cursor: pointer;
-
-            box-shadow:
-                0 8px 22px rgba(226,122,63,0.15);
-
-            transition:
-                transform 0.2s ease,
-                background 0.2s ease;
+            transition: 0.2s;
         }
 
-        .system-button:hover {
-            background: var(--orange-light);
+        .github-button:hover {
+            background: #2c2924;
+
+            border-color: #5a5148;
 
             transform: translateY(-2px);
-        }
-
-        .system-button:active {
-            transform: translateY(0);
         }
 
         /* Modal */
@@ -597,36 +747,37 @@
 
             inset: 0;
 
-            padding: 20px;
-
             display: none;
 
             align-items: center;
             justify-content: center;
 
-            background: rgba(0,0,0,0.65);
+            padding: 20px;
 
-            backdrop-filter: blur(7px);
+            background: rgba(0,0,0,0.68);
 
-            z-index: 10;
+            backdrop-filter: blur(8px);
+
+            z-index: 100;
         }
 
-        .modal.show {
+        .modal.open {
             display: flex;
         }
 
-        .modal-box {
-            width: min(430px, 100%);
+        .modal-content {
+            width: min(460px, 100%);
 
-            padding: 28px;
+            padding: 30px;
 
-            background: #211f1c;
+            background: #1b1917;
 
-            border: 1px solid #4a433b;
+            border: 1px solid #4a433a;
 
-            border-radius: 18px;
+            border-radius: 20px;
 
-            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            box-shadow:
+                0 35px 90px rgba(0,0,0,0.65);
 
             animation: modalIn 0.25s ease;
         }
@@ -643,19 +794,31 @@
             }
         }
 
-        .modal h2 {
-            margin: 0 0 8px;
+        .modal-label {
+            color: var(--accent);
 
-            color: #f0e9e1;
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .modal h2 {
+            margin: 8px 0 12px;
+
+            font-size: 25px;
         }
 
         .modal p {
-            color: #999087;
+            color: var(--muted);
 
-            line-height: 1.6;
+            font-size: 13px;
+
+            line-height: 1.7;
         }
 
-        .modal-close {
+        .close {
             width: 100%;
 
             margin-top: 12px;
@@ -664,119 +827,186 @@
 
             border: 1px solid var(--border);
 
-            border-radius: 9px;
+            border-radius: 10px;
 
-            background: #2c2925;
+            background: #282520;
 
             color: #ddd5cc;
 
             cursor: pointer;
+
+            font-weight: 700;
         }
 
-        .modal-close:hover {
-            background: #36312c;
+        .close:hover {
+            background: #322e28;
         }
 
         /* Mobile */
 
-        @media (max-width: 720px) {
+        @media (max-width: 760px) {
 
             body {
-                padding: 15px;
+                padding: 10px;
             }
 
-            .content {
-                padding: 32px 22px;
+            .main {
+                padding: 35px 22px;
             }
 
             .hero {
                 grid-template-columns: 1fr;
 
                 text-align: center;
-
-                gap: 25px;
             }
 
-            .boot-icon {
-                width: 125px;
-                height: 125px;
+            .logo-box {
+                width: 130px;
+                height: 130px;
 
                 margin: auto;
+
+                border-radius: 34px;
             }
 
-            .boot-symbol {
-                font-size: 52px;
+            .logo-letter {
+                font-size: 55px;
             }
 
             .description {
-                margin-left: auto;
-                margin-right: auto;
+                margin: auto;
             }
 
-            .info-grid {
+            .actions {
+                justify-content: center;
+            }
+
+            .cards,
+            .info-panel {
                 grid-template-columns: 1fr;
             }
 
-            .footer {
+            footer {
                 flex-direction: column;
-
-                align-items: stretch;
-
                 text-align: center;
             }
 
-            .system-button {
+            .github-button {
                 width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .topbar {
+                padding: 0 15px;
+            }
+
+            .github-small {
+                display: none;
+            }
+
+            .nav {
+                overflow-x: auto;
+            }
+
+            .nav a {
+                white-space: nowrap;
             }
 
             h1 {
-                letter-spacing: -2px;
+                font-size: 43px;
+            }
+
+            .actions .button {
+                width: 100%;
             }
         }
     </style>
 </head>
 
+
 <body>
 
-    <div class="window">
+    <div class="app">
 
-        <!-- Title bar -->
+        <!-- Window title bar -->
 
-        <header class="titlebar">
+        <header class="topbar">
 
             <div class="brand">
 
-                <div class="brand-icon">
+                <div class="brand-logo">
                     S
                 </div>
 
-                <div>
+                <div class="brand-text">
                     SuperUI Boot
-                    <small>System Project</small>
+                    <small>Custom Android Project</small>
                 </div>
 
             </div>
 
-            <div class="window-controls">
-                <span class="window-control"></span>
-                <span class="window-control"></span>
-                <span class="window-control"></span>
+
+            <div class="top-right">
+
+                <a
+                    class="github-small"
+                    href="https://github.com/YoussefAlaa-Magisk"
+                    target="_blank">
+
+                    GitHub ↗
+
+                </a>
+
+                <div class="window-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
             </div>
 
         </header>
 
 
-        <!-- Main content -->
+        <!-- Navigation -->
 
-        <main class="content">
+        <nav class="nav">
 
-            <section class="hero">
+            <a href="#overview">
+                Overview
+            </a>
 
-                <div class="boot-icon">
+            <a href="#features">
+                Features
+            </a>
 
-                    <span class="boot-symbol">
-                        ⚡
-                    </span>
+            <a href="#installation">
+                Installation
+            </a>
+
+            <a href="#project">
+                Project
+            </a>
+
+        </nav>
+
+
+        <main class="main">
+
+            <!-- Hero -->
+
+            <section
+                class="hero"
+                id="overview">
+
+                <div class="logo-box">
+
+                    <div class="logo-letter">
+                        S
+                    </div>
 
                 </div>
 
@@ -797,10 +1027,34 @@
 
                     <p class="description">
                         SuperUI is a custom ROM based on OneUI by
-                        Youssef Alaa. This time, SuperUI Boot is
-                        presented as a Magisk module for rooted
-                        OneUI devices.
+                        Youssef Alaa. This project introduces
+                        SuperUI Boot as a Magisk module for rooted
+                        OneUI devices, with the goal of providing
+                        a faster boot experience.
                     </p>
+
+
+                    <div class="actions">
+
+                        <a
+                            class="button button-primary"
+                            href="https://github.com/YoussefAlaa-Magisk"
+                            target="_blank">
+
+                            View on GitHub ↗
+
+                        </a>
+
+
+                        <button
+                            class="button button-secondary"
+                            onclick="openInfo()">
+
+                            System Information
+
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -810,15 +1064,22 @@
             <div class="divider"></div>
 
 
-            <section>
+            <!-- Features -->
 
-                <div class="section-title">
-                    Project Information
+            <section id="features">
+
+                <div class="section-label">
+                    Project Features
                 </div>
 
-                <div class="info-grid">
+
+                <div class="cards">
 
                     <article class="card">
+
+                        <div class="card-icon">
+                            ◈
+                        </div>
 
                         <div class="card-title">
                             Platform
@@ -828,42 +1089,38 @@
                             OneUI Devices
                         </div>
 
-                        <div class="card-description">
-                            Designed for rooted OneUI systems
-                        </div>
-
                     </article>
 
 
                     <article class="card">
 
+                        <div class="card-icon">
+                            +
+                        </div>
+
                         <div class="card-title">
-                            Requirement
+                            Access
                         </div>
 
                         <div class="card-value">
                             Magisk + Root
                         </div>
 
-                        <div class="card-description">
-                            Installed as a Magisk module
-                        </div>
-
                     </article>
 
 
                     <article class="card">
 
+                        <div class="card-icon">
+                            ↗
+                        </div>
+
                         <div class="card-title">
-                            Main Goal
+                            Target
                         </div>
 
                         <div class="card-value">
                             Faster Boot
-                        </div>
-
-                        <div class="card-description">
-                            Optimized boot experience
                         </div>
 
                     </article>
@@ -873,9 +1130,53 @@
             </section>
 
 
-            <!-- Installation information -->
+            <!-- Project details -->
 
-            <section class="status">
+            <section
+                class="info-panel"
+                id="project">
+
+                <article class="info">
+
+                    <h2>
+                        SuperUI
+                    </h2>
+
+                    <p>
+                        SuperUI is a custom ROM project based on
+                        OneUI, created by Youssef Alaa.
+                        SuperUI Boot extends the project with
+                        a dedicated Magisk module for rooted
+                        OneUI devices.
+                    </p>
+
+                </article>
+
+
+                <article class="info">
+
+                    <h2>
+                        Boot Experience
+                    </h2>
+
+                    <p>
+                        SuperUI Boot targets a faster boot
+                        experience. The first boot after
+                        installing the Magisk module may take
+                        around one minute. Subsequent boots are
+                        targeted to be faster.
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- Installation -->
+
+            <section
+                class="status"
+                id="installation">
 
                 <div class="status-icon">
                     ✓
@@ -888,10 +1189,11 @@
                     </div>
 
                     <div class="status-text">
-                        The first boot after installing the Magisk
-                        module may take around 1 minute.
-                        After the first boot, subsequent boots are
-                        targeted to be faster.
+                        The first boot after installing the
+                        Magisk module may take around 1 minute.
+                        This is expected during the initial
+                        setup. After the first boot, subsequent
+                        boots are targeted to be faster.
                     </div>
 
                 </div>
@@ -901,21 +1203,22 @@
 
             <!-- Progress -->
 
-            <section class="boot-progress">
+            <section class="progress-box">
 
-                <div class="progress-header">
+                <div class="progress-head">
 
-                    <span class="progress-title">
+                    <span>
                         SuperUI Boot Optimization
                     </span>
 
-                    <span class="progress-label">
+                    <span>
                         ACTIVE
                     </span>
 
                 </div>
 
-                <div class="progress-bar">
+
+                <div class="progress">
 
                     <div class="progress-fill"></div>
 
@@ -926,18 +1229,28 @@
 
             <!-- Footer -->
 
-            <footer class="footer">
+            <footer>
 
-                <div class="copyright">
+                <div class="footer-text">
+
                     SuperUI • Custom ROM Project<br>
-                    <strong>Created by Youssef Alaa</strong>
+
+                    <strong>
+                        Created by Youssef Alaa
+                    </strong>
+
                 </div>
 
-                <button
-                    class="system-button"
-                    onclick="openSystemInfo()">
-                    System Info
-                </button>
+
+                <a
+                    class="github-button"
+                    href="https://github.com/YoussefAlaa-Magisk"
+                    target="_blank">
+
+                    GitHub
+                    <span>↗</span>
+
+                </a>
 
             </footer>
 
@@ -951,30 +1264,36 @@
     <div
         class="modal"
         id="systemModal"
-        onclick="closeOutside(event)">
+        onclick="outsideClick(event)">
 
-        <div class="modal-box">
+        <div class="modal-content">
+
+            <div class="modal-label">
+                System Information
+            </div>
 
             <h2>
                 SuperUI Boot
             </h2>
 
             <p>
-                Custom OneUI ROM project by Youssef Alaa.
-                SuperUI Boot is provided as a Magisk module
-                for rooted OneUI devices.
+                A custom SuperUI boot project by Youssef Alaa,
+                provided as a Magisk module for rooted OneUI
+                devices.
             </p>
 
             <p>
                 First boot after installation may take around
-                1 minute. Subsequent boots are targeted to be
-                faster.
+                1 minute. After that, subsequent boots are
+                targeted to be faster.
             </p>
 
             <button
-                class="modal-close"
-                onclick="closeSystemInfo()">
+                class="close"
+                onclick="closeInfo()">
+
                 Close
+
             </button>
 
         </div>
@@ -984,38 +1303,49 @@
 
     <script>
 
-        function openSystemInfo() {
+        function openInfo() {
+
             document
                 .getElementById("systemModal")
-                .classList.add("show");
+                .classList.add("open");
+
         }
 
 
-        function closeSystemInfo() {
+        function closeInfo() {
+
             document
                 .getElementById("systemModal")
-                .classList.remove("show");
+                .classList.remove("open");
+
         }
 
 
-        function closeOutside(event) {
+        function outsideClick(event) {
 
             if (event.target.id === "systemModal") {
-                closeSystemInfo();
+
+                closeInfo();
+
             }
 
         }
 
 
-        document.addEventListener("keydown", function(event) {
+        document.addEventListener(
+            "keydown",
+            function(event) {
 
-            if (event.key === "Escape") {
-                closeSystemInfo();
+                if (event.key === "Escape") {
+
+                    closeInfo();
+
+                }
+
             }
-
-        });
+        );
 
     </script>
 
 </body>
-  </html>
+</html>
