@@ -1,3 +1,13 @@
+### v1.3
+
+- new fixed C++ Code For android in action.sh+new one
+- sadly no new boot theme soon in v 1.4 will be new boot
+- now its for snapdragon phones only
+- fixed boot sound
+- all ringtone/notifications sound and ui sounds from oneui8
+- we are sorry not a big upgrade but we are testing
+- new shutdown animation!
+
 ### v1.2
 
 - new c++ file for android in action.sh
