@@ -2,17 +2,7 @@
 
 
 
-<img src="Images/New Project [D01F672].png">
-
-
-
-
-
-
-
-
-
-
+![Image](Images/New%20Project%20%5BD01F672%5D.png)
 
 
 
