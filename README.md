@@ -1,4 +1,4 @@
 # -Super-UIBoot-module-
-<img src="../Images/New Project [D01 F672].png" width="280">
+<img src="../Images/New Project [D01F672].png" width="280">
 (SuperUI boot) By youssef Alaa SuperUI is a custom rom oneui by youssef alaa but this time i showed a magisk module for SUPERUI boot for ONEUI devices&amp;Rooted Super UI boot targets a faster boot first boot after install magisk module may take a 1 minute any boot After first Boot faster
 takes 24 seconds
