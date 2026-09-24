@@ -2,7 +2,7 @@
 
 
 
-<img src="/Images/New Project [D01F672].png" width="1440">
+<img src="Images/New Project [D01F672].png">
 
 
 
