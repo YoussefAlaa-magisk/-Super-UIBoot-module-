@@ -11,8 +11,8 @@
 takes 24 seconds
 
 
-main languages using : C++ (25.7%) && Shell (39%)
+main languages using : C++ (20.9%) && Shell (46.3%)
 
 
-identification languages using : python (17.4%) && batchfile (17.9%)
+identification languages using : python (14.4%) && batchfile (17.9%)
 
